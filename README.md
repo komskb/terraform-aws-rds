@@ -12,7 +12,7 @@ AWS RDS를 생성하는 Terraform 모듈 입니다.
 
 ```hcl
 module "rds" {
-  source = "komskb/terraform-module-rds"
+  source = "komskb/rds/aws"
 
   project = "${var.project}"
   environment = "${var.environment}"
