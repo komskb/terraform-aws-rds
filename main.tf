@@ -14,8 +14,8 @@ module "rds" {
   engine                          = "aurora-mysql"
   engine_version                  = "5.7.12"
   vpc_id                          = var.vpc_id
-  subnets                         = [var.subnets]
-  allowed_security_groups         = [var.allowed_security_groups]
+  subnets                         = var.subnets
+  allowed_security_groups         = var.allowed_security_groups
   allowed_security_groups_count   = var.allowed_security_groups_count
   apply_immediately               = true
   skip_final_snapshot             = true
