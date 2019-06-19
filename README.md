@@ -51,8 +51,8 @@ Terraform version 0.11.13 or newer is required for this module to work.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| access\_cidrs | RDS access cidrs | list | n/a | yes |
-| allowed\_security\_groups | allowed security groups | list | n/a | yes |
+| access\_cidrs | RDS access cidrs | list(string) | n/a | yes |
+| allowed\_security\_groups | allowed security groups | list(string) | n/a | yes |
 | allowed\_security\_groups\_count | allowed security groups count | string | `"0"` | no |
 | database\_name | RDS database name | string | n/a | yes |
 | environment | Deploy environment | string | n/a | yes |
@@ -61,8 +61,8 @@ Terraform version 0.11.13 or newer is required for this module to work.
 | project | Project name to use on all resources created (VPC, ALB, etc) | string | n/a | yes |
 | publicly\_accessible | RDS public access | string | `"false"` | no |
 | replica\_count | replica count | string | `"2"` | no |
-| subnets | subnets | list | n/a | yes |
-| tags | A map of tags to use on all resources | map | `{}` | no |
+| subnets | subnets | list(string) | n/a | yes |
+| tags | A map of tags to use on all resources | map(string) | `{}` | no |
 | username | RDS master username | string | n/a | yes |
 | vpc\_id | vpc id | string | n/a | yes |
 

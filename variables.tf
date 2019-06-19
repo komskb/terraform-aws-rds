@@ -1,52 +1,52 @@
 variable "project" {
   description = "Project name to use on all resources created (VPC, ALB, etc)"
-  type        = "string"
+  type        = string
 }
 
 variable "environment" {
   description = "Deploy environment"
-  type        = "string"
+  type        = string
 }
 
 variable "tags" {
   description = "A map of tags to use on all resources"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "vpc_id" {
   description = "vpc id"
-  type        = "string"
+  type        = string
 }
 
 variable "subnets" {
   description = "subnets"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "access_cidrs" {
   description = "RDS access cidrs"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "database_name" {
   description = "RDS database name"
-  type        = "string"
+  type        = string
 }
 
 variable "username" {
   description = "RDS master username"
-  type        = "string"
+  type        = string
 }
 
 variable "password" {
   description = "RDS master password"
-  type        = "string"
+  type        = string
 }
 
 variable "allowed_security_groups" {
   description = "allowed security groups"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "allowed_security_groups_count" {
@@ -61,12 +61,13 @@ variable "replica_count" {
 
 variable "instance_type" {
   description = "RDS instance type"
-  type        = "string"
+  type        = string
   default     = "db.t2.small"
 }
 
 variable "publicly_accessible" {
   description = "RDS public access"
-  type        = "string"
+  type        = string
   default     = "false"
 }
+
