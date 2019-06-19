@@ -14,36 +14,36 @@ AWS RDS를 생성하는 Terraform 모듈 입니다.
 module "rds" {
   source = "komskb/rds/aws"
 
-  project = "${var.project}"
-  environment = "${var.environment}"
-  subnets = ["${module.vpc.database_subnets}"]
-  vpc_id = "${module.vpc.vpc_id}"
-  allowed_security_groups = ["${module.alb.security_group_id}"]
+  project = var.project
+  environment = var.environment
+  subnets = [module.vpc.database_subnets]
+  vpc_id = module.vpc.vpc_id
+  allowed_security_groups = [module.alb.security_group_id]
   allowed_security_groups_count = 1
 
   replica_count = 2
-  instance_type = "${var.rds_instance_type}"
+  instance_type = var.rds_instance_type
 
   //require customization
-  publicly_accessible = "${local.rds_use_public_access}"
-  access_cidrs = ["${var.rds_access_cidrs}"]
+  publicly_accessible = local.rds_use_public_access
+  access_cidrs = [var.rds_access_cidrs]
 
   //require customization
-  database_name = "${var.rds_database_name}"
-  username = "${var.rds_master_username}"
-  password = "${var.rds_master_password}"
+  database_name = var.rds_database_name
+  username = var.rds_master_username
+  password = var.rds_master_password
 
   tags = {
-    Name = "${format("%s-%s-rds", var.project, var.environment)}"
-    Terraform = "${var.terraform_repo}"
-    Environment = "${var.environment}"
+    Name = format("%s-%s-rds", var.project, var.environment)
+    Terraform = var.terraform_repo
+    Environment = var.environment
   }
 }
 ```
 
 ## Terraform version
 
-Terraform version 0.11.13 or newer is required for this module to work.
+Terraform version 0.12.0 or newer is required for this module to work.
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
