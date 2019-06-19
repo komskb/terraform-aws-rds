@@ -2,14 +2,6 @@ locals {
   publicly_accessible = var.publicly_accessible == "true" ? true : false
 }
 
-provider "aws" {
-  version = "~> 2.15"
-}
-
-provider "random" {
-  version = "~> 2.1"
-}
-
 ###################
 # RDS
 ###################
