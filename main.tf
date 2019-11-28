@@ -21,7 +21,7 @@ module "rds" {
   db_parameter_group_name         = "default.aurora-mysql5.7"
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.this.name
 
-  replica_count = length(var.subnets)
+  replica_count = var.replica_count
   instance_type = var.instance_type
 
   //require customization
