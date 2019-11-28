@@ -8,7 +8,7 @@ locals {
 
 module "rds" {
   source  = "terraform-aws-modules/rds-aurora/aws"
-  version = "~> v2.0"
+  version = "v2.9.0"
 
   name                            = format("%s-%s-rds", var.project, var.environment)
   engine                          = "aurora-mysql"
@@ -16,13 +16,12 @@ module "rds" {
   vpc_id                          = var.vpc_id
   subnets                         = var.subnets
   allowed_security_groups         = var.allowed_security_groups
-  allowed_security_groups_count   = var.allowed_security_groups_count
   apply_immediately               = true
   skip_final_snapshot             = true
   db_parameter_group_name         = "default.aurora-mysql5.7"
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.this.name
 
-  replica_count = 2
+  replica_count = length(var.subnets)
   instance_type = var.instance_type
 
   //require customization
